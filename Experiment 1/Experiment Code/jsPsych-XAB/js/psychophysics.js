@@ -282,11 +282,197 @@
       },
     }
 
+    var ez_sim_practice = {
+      type: 'html-keyboard-response',
+      stimulus: '',
+      choices: ['A', 'B'],
+      trial_duration: 4000,
+      on_start: function(trial) {
+        var correct = jsPsych.randomization.sampleWithoutReplacement(['A', 'B'], 1)[0];
+        var bool = boolean();
+        var a = bool ? generate_stim(0.3, 0.3) : generate_stim(0.3, 0.7);
+        var b = bool ? generate_stim(0.3, 0.7) : generate_stim(0.3, 0.3);
+        if (correct == 'A'){var x = a}
+        else /* (correct == 'B') */ {var x = b}
+        var stim = '<div id = "target" style="position: relative; width:600px; height:600px;">';
+        if (correct == 'A'){
+          stim += '<div id ="x">'+x+'</div>' +
+            '<div class= "stim" id ="A">'+a+'</div>' +
+            '<div class= "stim" id ="B">'+b+'</div>';
+        } else /* (correct == 'B') */ {
+          stim += '<div id ="x">'+x+'</div>' +
+            '<div class= "stim" id ="A">'+a+'</div>' +
+            '<div class= "stim" id ="B">'+b+'</div>';
+        }
+        stim += '</div>';
+        var question = '<div class="center"><p>Choose the identical sunburst.</p></div>';
+        trial.stimulus = stim + question;
+        trial.data = {
+          test_part: 'XAB',
+          correct_response: correct,
+          x_stim: x,
+          a_stim: a,
+          b_stim: b,
+        }
+      },
+      on_finish: function(data) {
+        if (data.correct_response == 'A') {data.correct = data.key_press == 65;}
+        if (data.correct_response == 'B') {data.correct = data.key_press == 66;}
+      },
+      loop_function: function(data) {
+        if (data.correct) {return false}
+        else {return true}
+      }
+    }
+
+    var hard_sim_practice = {
+      type: 'html-keyboard-response',
+      stimulus: '',
+      choices: ['A', 'B'],
+      trial_duration: 4000,
+      on_start: function(trial) {
+        var correct = jsPsych.randomization.sampleWithoutReplacement(['A', 'B'], 1)[0];
+        var bool = boolean();
+        var a = bool ? generate_stim(0.6, 0.6) : generate_stim(0.4, 0.6);
+        var b = bool ? generate_stim(0.4, 0.6) : generate_stim(0.6, 0.6);
+        if (correct == 'A'){var x = a}
+        else /* (correct == 'B') */ {var x = b}
+        var stim = '<div id = "target" style="position: relative; width:600px; height:600px;">';
+        if (correct == 'A'){
+          stim += '<div id ="x">'+x+'</div>' +
+            '<div class= "stim" id ="A">'+a+'</div>' +
+            '<div class= "stim" id ="B">'+b+'</div>';
+        } else /* (correct == 'B') */ {
+          stim += '<div id ="x">'+x+'</div>' +
+            '<div class= "stim" id ="A">'+a+'</div>' +
+            '<div class= "stim" id ="B">'+b+'</div>';
+        }
+        stim += '</div>';
+        var question = '<div class="center"><p>Choose the identical sunburst.</p></div>';
+        trial.stimulus = stim + question;
+        trial.data = {
+          test_part: 'XAB',
+          correct_response: correct,
+          x_stim: x,
+          a_stim: a,
+          b_stim: b,
+        }
+      },
+      on_finish: function(data) {
+        if (data.correct_response == 'A') {data.correct = data.key_press == 65;}
+        if (data.correct_response == 'B') {data.correct = data.key_press == 66;}
+      },
+      loop_function: function(data) {
+        if (data.correct) {return false}
+        else {return true}
+      }
+    }
+
+    var ez_suc_practice = {
+      type: 'html-keyboard-response',
+      stimulus: '',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 1000,
+      on_start: function(trial) {
+        var correct = jsPsych.randomization.sampleWithoutReplacement(['A', 'B'], 1)[0];
+        var bool = boolean();
+        var a = bool ? generate_stim(0.7, 0.7) : generate_stim(0.7, 0.3);
+        var b = bool ? generate_stim(0.7, 0.3) : generate_stim(0.7, 0.7);
+        if (correct == 'A'){var x = a}
+        else /* (correct == 'B') */ {var x = b}
+        var stim = '<div id = "target" style="position: relative; width:600px; height:600px;">';
+        if (correct == 'A'){
+          stim += '<div id ="x">'+x+'</div>' +
+            '<div class= "stim" id ="A">'+hide_stim()+'</div>' +
+            '<div class= "stim" id ="B">'+hide_stim()+'</div>';
+        } else /* (correct == 'B') */ {
+          stim += '<div id ="x">'+x+'</div>' +
+            '<div class= "stim" id ="A">'+hide_stim()+'</div>' +
+            '<div class= "stim" id ="B">'+hide_stim()+'</div>';
+        }
+        stim += '</div>';
+        var question = '<div class="center"><p>Choose the identical sunburst.</p></div>';
+        trial.stimulus = stim + question;
+        trial.data = {
+          test_part: 'X',
+          correct_response: correct,
+          x_stim: x,
+          a_stim: a,
+          b_stim: b,
+        }
+      },
+    }
+
+    var hard_suc_practice = {
+      type: 'html-keyboard-response',
+      stimulus: '',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 1000,
+      on_start: function(trial) {
+        var correct = jsPsych.randomization.sampleWithoutReplacement(['A', 'B'], 1)[0];
+        var bool = boolean();
+        var a = bool ? generate_stim(0.6, 0.6) : generate_stim(0.4, 0.6);
+        var b = bool ? generate_stim(0.4, 0.6) : generate_stim(0.6, 0.6);
+        if (correct == 'A'){var x = a}
+        else /* (correct == 'B') */ {var x = b}
+        var stim = '<div id = "target" style="position: relative; width:600px; height:600px;">';
+        if (correct == 'A'){
+          stim += '<div id ="x">'+x+'</div>' +
+            '<div class= "stim" id ="A">'+hide_stim()+'</div>' +
+            '<div class= "stim" id ="B">'+hide_stim()+'</div>';
+        } else /* (correct == 'B') */ {
+          stim += '<div id ="x">'+x+'</div>' +
+            '<div class= "stim" id ="A">'+hide_stim()+'</div>' +
+            '<div class= "stim" id ="B">'+hide_stim()+'</div>';
+        }
+        stim += '</div>';
+        var question = '<div class="center"><p>Choose the identical sunburst.</p></div>';
+        trial.stimulus = stim + question;
+        trial.data = {
+          test_part: 'X',
+          correct_response: correct,
+          x_stim: x,
+          a_stim: a,
+          b_stim: b,
+        }
+      },
+    }
+
+    var practice_ab = {
+      type: 'html-keyboard-response',
+      stimulus: '',
+      choices: ['A','B'],
+      trial_duration: 4000,
+      on_start: function(trial) {
+        var a = jsPsych.data.get().filter({test_part: 'X',}).last(1).values()[0].a_stim;
+        var b = jsPsych.data.get().filter({test_part: 'X',}).last(1).values()[0].b_stim;
+        var stim = '<div id = "target" style="position: relative; width:600px; height:550px;">'+
+          '<div id ="x">'+hide_stim()+'</div>' +
+          '<div class= "stim" id ="A">'+a+'</div>' +
+          '<div class= "stim" id ="B">'+b+'</div></div>';
+        var question = '<div class="center"><p>Choose the identical sunburst.</p></div>';
+        trial.stimulus = stim + question;
+        trial.data = {
+          test_part: 'XAB',
+          correct_response: jsPsych.data.get().filter({test_part: 'X',}).last(1).values()[0].correct_response,
+          dimension: jsPsych.data.get().filter({test_part: 'X',}).last(1).values()[0].dimension,
+          distance: jsPsych.data.get().filter({test_part: 'X',}).last(1).values()[0].distance,
+          a_stim: a,
+          b_stim: b,
+        }
+      },
+      on_finish: function(data) {
+        if (data.correct_response == 'A') {data.correct = data.key_press == 65;}
+        if (data.correct_response == 'B') {data.correct = data.key_press == 66;}
+        //data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
+      },
+    }
+
     var test = {
       type: 'html-keyboard-response',
       stimulus: '',
       choices: ['A', 'B'],
-      trial_duration: 1000,
+      trial_duration: 4000,
       on_start: function(trial) {
         trials += 1;
         var correct = jsPsych.randomization.sampleWithoutReplacement(['A', 'B'], 1)[0];
@@ -416,7 +602,7 @@
       type: 'html-keyboard-response',
       stimulus: '',
       choices: ['A','B'],
-      trial_duration: 1000,
+      trial_duration: 4000,
       on_start: function(trial) {
         var a = jsPsych.data.get().filter({test_part: 'X',}).last(1).values()[0].a_stim;
         var b = jsPsych.data.get().filter({test_part: 'X',}).last(1).values()[0].b_stim;
@@ -473,23 +659,23 @@
             '</div><div class= "center"><p>Correct!</p></div>';
         } else if (lastCorrect == false && actualResponse == 'A') {
           incorrect_sound.play();
-          stim += '<div class= "incorrect" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
+          stim += '<div class= "stim" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
             '<div class= "correct" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
             '</div><div class= "center"><p>Incorrect!</p></div>';
         } else if (lastCorrect == false && actualResponse == 'B') {
           incorrect_sound.play();
           stim += '<div class= "correct" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
-            '<div class= "incorrect" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
+            '<div class= "stim" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
             '</div><div class= "center"><p>Incorrect!</p></div>';
         } else if (lastCorrect == false && actualResponse == null && correctResponse == 'A') {
           incorrect_sound.play();
-          stim += '<div class= "incorrect" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
+          stim += '<div class= "correct" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
             '<div class= "stim" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
             '</div><div class= "center"><p>'+too_slow+'!</p></div>';
         } else /* (lastCorrect == false && actualResponse == null && correctResponse == 'B') */ {
           incorrect_sound.play();
           stim += '<div class= "stim" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
-            '<div class= "incorrect" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
+            '<div class= "correct" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
             '</div><div class= "center"><p></p>'+too_slow+'!</p></div>';
         }
         stim +=
@@ -528,26 +714,26 @@
         } else if (lastCorrect == false && actualResponse == 'A') {
           incorrect_sound.play();
           stim += '<div id ="x">' + jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].x_stim + '</div>' +
-            '<div class= "incorrect" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
+            '<div class= "stim" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
             '<div class= "correct" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
             '</div><div class= "center"><p>Incorrect!</p></div>';
         } else if (lastCorrect == false && actualResponse == 'B') {
           incorrect_sound.play();
           stim += '<div id ="x">' + jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].x_stim + '</div>' +
             '<div class= "correct" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
-            '<div class= "incorrect" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
+            '<div class= "stim" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
             '</div><div class= "center"><p>Incorrect!</p></div>';
         } else if (lastCorrect == false && actualResponse == null && correctResponse == 'A') {
           incorrect_sound.play();
           stim += '<div id ="x">' + jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].x_stim + '</div>' +
-            '<div class= "incorrect" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
+            '<div class= "correct" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
             '<div class= "stim" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
             '</div><div class= "center"><p>'+too_slow+'!</p></div>';
         } else /* (lastCorrect == false && actualResponse == null && correctResponse == 'B') */ {
           incorrect_sound.play();
           stim += '<div id ="x">' + jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].x_stim + '</div>' +
             '<div class= "stim" id ="A">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].a_stim + '</div>' +
-            '<div class= "incorrect" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
+            '<div class= "correct" id ="B">'+ jsPsych.data.get().filter({test_part: 'XAB',}).last(1).values()[0].b_stim + '</div>' +
             '</div><div class= "center"><p></p>'+too_slow+'!</p></div>';
         }
         stim +=
@@ -561,7 +747,6 @@
       stimulus: "<p>This experiment is being conducted by researchers at Vassar College.</p> \
       <p>It consists of a task which involves viewing various stimuli and making simple judgments about them.</p> \
       <p>The study takes approximately __ minutes to complete. </p> \
-      <p>Participation poses minimal risk, meaning the risk is no greater than that of normal, everyday activities. </p> \
       <p>Your anonymous data, identified only by your Prolific worker ID, will be used for research purposes. </p> \
       <p>For your participation, you will receive a small payment of $_ upon completion of the experiment. </p> \
       <p>You are free to stop the experiment by closing your browser window at any time. </p> \
@@ -571,40 +756,67 @@
     }
 
     var overview = {
-      type: "html-button-response",
-      choices: ["CONTINUE"],
-      stimulus: "<p>Welcome to the experiment! </p> \
-      <p>This study involves making speeded perceptual judgments about presented stimuli.</p> \
-      <p>We will acquaint you with the task before you begin. As you get better at the tasks, they will become increasingly difficult!</p> \
-      <p>Please ensure that you are able to devote your full attention to the tasks and do your best to answer correctly.</p> \
-      <p>If you are unable to do so, we strongly encourage you not to continue with the experiment. </p> \
-      <p>Please make sure your sound volume is set at a comfortable level and close all other browser windows.</p> \
-      <p>If you wish to partake in the experiment, press 'continue'! Otherwise, please close your browser window now.</p>",
+      type: "html-keyboard-response",
+      stimulus: "<img src='img/sunburst.png'></img>" + "<p>Welcome to the experiment! This study involves making judgments about </p> \
+      <p>patterns we call sunbursts, depicted above. We will acquaint you with the task before you begin.<p> \
+      <p>Please ensure that you are able to devote your full attention to the tasks and do your best to answer correctly.<p> \
+      <p>Press any key to continue.</p>",
       data: {test_part: 'NR'}
     }
 
-    var instruct = {
-      type: "html-button-response",
-      choices: ['CONTINUE'],
-      stimulus: "<p>These are the instructions.</p>",
+    var pre_simultaneous_instructions = {
+      type: "html-keyboard-response",
+      stimulus: "<p>Three sunbursts will appear on the screen, one centered above the other two. </p> \
+        <p>Your task is to select the sunburst that is most similar to the top one. </p> \
+        <p>Press <strong>A</strong> if the sunburst on the left is more similar to the top one.</p> \
+        <p>Press <strong>B</strong> if the sunburst on the right is more similar to the top one.</p> \
+        <p>Press any key to continue to the practice trial. </p>",
+      data: {test_part: 'NR'}
+    }
+
+    var post_simultaneous_instructions = {
+      type: "html-keyboard-response",
+      stimulus: "<p>As you can see, the correct choice will be outlined in blue. That way, you will know if you got it right or not. </p> \
+        <p>Don’t be discouraged if you get it wrong, this task is designed to be difficult! Let’s try another trial this same way. </p> \
+        <p>Remember, press <strong>A</strong> if the sunburst on the left is more similar to the top one.</p> \
+        <p>Press <strong>B</strong> if the sunburst on the right is more similar to the top one. </p> \
+        <p>Press any key to continue to the practice trial. </p>",
+      data: {test_part: 'NR'}
+    }
+
+    var pre_successive_instructions = {
+      type: "html-keyboard-response",
+      stimulus: "<p>Okay, now let’s try the task the way that it will be presented in the real experiment.</p> \
+       <p>In this version, the first picture appearing alone,then disappearing, then the two pictures appearing on the bottom.</p> \
+       <p>Your task is the same as before and the feedback will work the same way. </p> \
+       <p>Press any key to continue to the practice trial. </p>",
+      data: {test_part: 'NR'}
+    }
+
+    var post_successive_instructions = {
+      type: "html-keyboard-response",
+      stimulus: "<p>On each trial you will have up to <strong>4 seconds</strong> to respond before moving on to the next trial. </p> \
+        <p>Please do your best to respond within that time and if you’re not sure, please guess! </p> \
+        <p>Let’s try another, harder one. Press any key to continue to the practice trial. </p>",
       data: {test_part: 'NR'}
     }
 
     var last_remarks = {
-      type: "html-button-response",
-      choices: ['CONTINUE'],
-      stimulus: "<p>You will have just <strong>1 second</strong> to enter your response, </p> \
-      <p>and after that it will move on to the next trial, so please do your best to respond within that time!</p> \
-      <p>During the experiment, a progress bar will appear at the top of the screen to indicate your completion. </p> \
-      <p>Okay, you’re finally ready to start! Press 'Continue' to proceed.</p>",
+      type: "html-keyboard-response",
+      stimulus: "<p>Okay, you’re finally ready to start!</p> \
+      <p>During the experiment, a progress bar will appear at the top of the screen to indicate your completion.</p> \
+      <p>Press 'Continue' to proceed to the experiment.</p>",
       data: {test_part: 'NR'}
     };
 
     var instructions = {
-      timeline: [consent_form, overview, instruct, last_remarks],
+      timeline: [consent_form, overview, pre_simultaneous_instructions, ez_sim_practice, simultaneous_feedback,
+        post_simultaneous_instructions, hard_sim_practice, simultaneous_feedback,
+        pre_successive_instructions, ez_suc_practice, blank, practice_ab, successive_feedback,
+        post_successive_instructions, hard_suc_practice, blank, practice_ab, successive_feedback, last_remarks],
       data: {test_part: 'NR'}
     }
-    timeline.push(instruct);
+    timeline.push(instructions);
 
     var countdown = {
       timeline: [
