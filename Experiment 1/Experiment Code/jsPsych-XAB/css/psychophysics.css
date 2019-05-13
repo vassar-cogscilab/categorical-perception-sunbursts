@@ -1,0 +1,66 @@
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      background: white;
+    }
+
+    .center {
+      position: absolute;
+      width: 100vw;
+      left: 0;
+    }
+
+    .stim {
+      width: 250px;
+      height: 250px;
+      padding: 10px;
+      box-shadow: 0 4px 2px 0 rgba(0,0,0,0.5);
+      border: 1px solid #ccc;
+      margin: 0px 10px;
+      background-color: white;
+    }
+
+    .correct {
+      width: 250px;
+      height: 250px;
+      padding: 0px;
+      box-shadow: 0 4px 2px 0 rgba(0,0,0,0.5);
+      border: 11px solid limegreen;
+      margin: 0px 10px;
+      background-color: white;
+    }
+
+    .incorrect {
+      width: 250px;
+      height: 250px;
+      padding: 0px;
+      box-shadow: 0 4px 2px 0 rgba(0,0,0,0.5);
+      border: 11px solid red;
+      margin: 0px 10px;
+      background-color: white;
+    }
+
+    #target {
+      display: inline-block;
+      width: 80%;
+    }
+
+    #x {
+      position: relative;
+      float: center;
+      width:100%;
+      display:block;
+    }
+
+    #A {
+      overflow: hidden;
+      float: center;
+      display: inline-block;
+    }
+
+    #B {
+      overflow: hidden;
+      float: center;
+      display: inline-block;
+    }
